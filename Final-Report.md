@@ -1,15 +1,6 @@
 ﻿
 # **International Debt Statistics and Projection**
-## <a name="_5afctxl8crr"></a>**Team Members and Github Ids**
-Janelle Bauske (GitHub ID: jbauske01)
 
-Punami Chowdary (GitHub ID: pcdukkip)
-
-Nandita Ghildyal (GitHub ID: gappy401) (Point of contact)
-
-Jill Karia (Github ID: jillkaria270)
-
-Sandra Chiwike (Github ID: SandraNgozi)
 ## <a name="_2qxuawuy760l"></a>**Introduction**
 Our overall goal is to develop a model that predicts the likelihood of a country defaulting on its external international loans via the World Bank or IMF. Unlike traditional models that rely solely on the financial factors of a country, our approach considers  the country’s historical debt statistics through a time series in addition to various socio-economic factors to assess its ability to repay external loans. 
 
