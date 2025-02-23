@@ -12,4 +12,4 @@ This project focuses on developing a predictive model to assess the likelihood o
 
 ## Learn More  
 
-For a detailed analysis and findings, please refer to the **[final report](./final_report.pdf)**.  
+For a detailed analysis and findings, please refer to the **[final report](./Final-Report.md)**.  
