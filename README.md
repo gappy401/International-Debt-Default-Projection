@@ -46,33 +46,33 @@ On looking at the explanatory variables we find high positive correlation betwee
 # <a name="_oyh6x34ftkix">Methods</a>
 
 
-## Data Collection and Initial Setup
+## 1. Data Collection and Initial Setup
 Our research project commenced by sourcing original data from three distinct databases provided by the World Bank and the U.S. Department of the Treasury, specifically focusing on debt metrics. Initially, we extracted data exclusively for the United States, organizing our features as columns and years as rows in Excel. This arrangement resulted in a dataset comprising 63 rows and 86 columns.
 
-## Feature Selection and Data Imputation
+## 2. Feature Selection and Data Imputation
 We employed XGBoost to distill the dataset to the top 100 most critical features. We encountered significant issues with missing data—a common challenge in large economic datasets. Traditional imputation methods were insufficient due to the nuanced nature of economic variables.
 
-## Choice of Modeling Technique: VAR
+## 3. Choice of Modeling Technique: VAR
 Given the intricacies of economic forecasting, we opted for the Vector Auto Regression (VAR) model due to its robust capability in managing multiple interdependent time series. The model cannot handel null values so we utilised the iterative imputer to fill in the null values. The VAR model excels in forecasting multiple series by acknowledging their interdependencies, such as the inverse relationship observed between unemployment and GDP.
 
 However, VAR models are constrained by the ratio of features to observations, dictated by the formula \( n > k \times p \) (where \( n \) is the number of observations, \( k \) is the number of variables, and \( p \) is the number of lags). For our data, this limitation meant we could either incorporate 21 features with 3 lags or 14 features with 4 lags, which significantly restricted our ability to analyze a more comprehensive set of variables.
 
-## Transition to LSTM Models
+## 4. Transition to LSTM Models
 To overcome the limitations of the VAR model, we shifted our focus to Long Short-Term Memory (LSTM) networks. An initial experiment with a simple LSTM model on U.S. data produced promising results. To address potential biases of using data solely from the U.S., we expanded our dataset to include socio-economic, health, and educational data from an additional 170 countries. This expansion culminated in a comprehensive dataset, which we consolidated using an outer join by country and year, resulting in a data frame with over 10,000 columns.
 
 
-## Data Masking Strategy
+## 5. Data Masking Strategy
 Due to the limitations of traditional imputation methods, we decided on a data masking approach to handle missing values. We masked the missing data with a placeholder value of -999, ensuring that these entries would not impact the model’s performance. This method allowed us to preserve the integrity of the dataset while effectively managing missing data, which was critical for maintaining the reliability of our predictive models.
 
-## Refining the LSTM Approach
+## 6. Refining the LSTM Approach
 We further refined our approach by building a split-sequences function that created a rolling window with 10 steps in and 5 steps out. This enabled the LSTM model to manage data more effectively, processing sequences in digestible chunks. This setup, combined with data normalization (min-max scaler) and strategic splitting into training and testing sets, prepared our data for more effective deep learning applications.
 
 Despite various iterations, including testing bi-directional and stateful LSTMs, we finalized an LSTM that consisted of 2 RELU layers that included a time-distributed layer and a repeat vector layer, essential for capturing the dynamic nature of the sequences.
 
-## Model Training and Evaluation
+## 7. Model Training and Evaluation
 We tested three different custom loss funtions - scaled MSE, Asymmetric Error and Mean Squared Logarithmic error but decided to go with  the default loss funtion which is MSE. However, we did write our own custom metric funtion, which is mean cude error. We also selected an 'adam' optimizer. After training, we tested the model using our designed test set, reshaping our target variables to meet LSTM requirements and conducting a thorough analysis through mean absolute error metrics and graphical comparisons of predicted versus actual values.
 
-## Testing on Unseen Data
+## 8. Testing on Unseen Data
 In a final validation step, we applied our refined model to unseen data from Argentina, which had been excluded from the initial training phase. This test provided additional evidence of our model’s predictive accuracy and its applicability to different economic contexts across various countries.
 
 # <a name="_oyh6x34ftkix">Results</a>
