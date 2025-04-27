@@ -1,12 +1,12 @@
 
 # **International Debt Statistics and Projection**
 
-## <a name="_2qxuawuy760l"></a>**Introduction**
+# <a name="_2qxuawuy760l"></a>**Introduction**
 Our overall goal is to develop a model that predicts the likelihood of a country defaulting on its external international loans via the World Bank or IMF. Unlike traditional models that rely solely on the financial factors of a country, our approach considers  the country’s historical debt statistics through a time series in addition to various socio-economic factors to assess its ability to repay external loans. 
 
 Our model aims to identify the root causes of economic instability affecting a country, which, in turn, affects its ability to repay a loan. Once these factors are identified, organizations such as the World Bank can work proactively with countries to target areas of instability via monetary aid to reduce the likelihood of a default occurring. This model will assist in facilitating more sustainable lending practices for organizations such as the World Bank or IMF. Additionally, our model can be used by government institutions or relevant policy makers to inform decisions regarding external borrowing and monitoring outstanding debt. Our model can also be employed by NGOs or to be considered for initiatives like the HIPC (Heavily Indebted Poor Countries) to help target their interventions by identifying the underlying causes of the problem.
 
-## <a name="_k908qhrj3mxk"></a>**Literature Review** 
+# <a name="_k908qhrj3mxk"></a>**Literature Review** 
 
 In our review of existing literature, we found that Luckner and Farah-Yacoub's 2023 study<sup>[^1]</sup> emphasized the significant consequences of global debt defaults, highlighting an increase in defaults and the associated human hardships. The urgency conveyed by this study prompted our commitment to addressing this critical issue.
 
