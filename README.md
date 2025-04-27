@@ -43,39 +43,39 @@ On looking at the explanatory variables we find high positive correlation betwee
   <em>2.2 Trends in explanatory variables over time</em>
 </p>
 
-### <a name="_oyh6x34ftkix">Methods</a>
+# <a name="_oyh6x34ftkix">Methods</a>
 
 
-### Data Collection and Initial Setup
+## Data Collection and Initial Setup
 Our research project commenced by sourcing original data from three distinct databases provided by the World Bank and the U.S. Department of the Treasury, specifically focusing on debt metrics. Initially, we extracted data exclusively for the United States, organizing our features as columns and years as rows in Excel. This arrangement resulted in a dataset comprising 63 rows and 86 columns.
 
-### Feature Selection and Data Imputation
+## Feature Selection and Data Imputation
 We employed XGBoost to distill the dataset to the top 100 most critical features. We encountered significant issues with missing data—a common challenge in large economic datasets. Traditional imputation methods were insufficient due to the nuanced nature of economic variables.
 
-### Choice of Modeling Technique: VAR
+## Choice of Modeling Technique: VAR
 Given the intricacies of economic forecasting, we opted for the Vector Auto Regression (VAR) model due to its robust capability in managing multiple interdependent time series. The model cannot handel null values so we utilised the iterative imputer to fill in the null values. The VAR model excels in forecasting multiple series by acknowledging their interdependencies, such as the inverse relationship observed between unemployment and GDP.
 
 However, VAR models are constrained by the ratio of features to observations, dictated by the formula \( n > k \times p \) (where \( n \) is the number of observations, \( k \) is the number of variables, and \( p \) is the number of lags). For our data, this limitation meant we could either incorporate 21 features with 3 lags or 14 features with 4 lags, which significantly restricted our ability to analyze a more comprehensive set of variables.
 
-### Transition to LSTM Models
+## Transition to LSTM Models
 To overcome the limitations of the VAR model, we shifted our focus to Long Short-Term Memory (LSTM) networks. An initial experiment with a simple LSTM model on U.S. data produced promising results. To address potential biases of using data solely from the U.S., we expanded our dataset to include socio-economic, health, and educational data from an additional 170 countries. This expansion culminated in a comprehensive dataset, which we consolidated using an outer join by country and year, resulting in a data frame with over 10,000 columns.
 
 
-### Data Masking Strategy
+## Data Masking Strategy
 Due to the limitations of traditional imputation methods, we decided on a data masking approach to handle missing values. We masked the missing data with a placeholder value of -999, ensuring that these entries would not impact the model’s performance. This method allowed us to preserve the integrity of the dataset while effectively managing missing data, which was critical for maintaining the reliability of our predictive models.
 
-### Refining the LSTM Approach
+## Refining the LSTM Approach
 We further refined our approach by building a split-sequences function that created a rolling window with 10 steps in and 5 steps out. This enabled the LSTM model to manage data more effectively, processing sequences in digestible chunks. This setup, combined with data normalization (min-max scaler) and strategic splitting into training and testing sets, prepared our data for more effective deep learning applications.
 
 Despite various iterations, including testing bi-directional and stateful LSTMs, we finalized an LSTM that consisted of 2 RELU layers that included a time-distributed layer and a repeat vector layer, essential for capturing the dynamic nature of the sequences.
 
-### Model Training and Evaluation
+## Model Training and Evaluation
 We tested three different custom loss funtions - scaled MSE, Asymmetric Error and Mean Squared Logarithmic error but decided to go with  the default loss funtion which is MSE. However, we did write our own custom metric funtion, which is mean cude error. We also selected an 'adam' optimizer. After training, we tested the model using our designed test set, reshaping our target variables to meet LSTM requirements and conducting a thorough analysis through mean absolute error metrics and graphical comparisons of predicted versus actual values.
 
-### Testing on Unseen Data
+## Testing on Unseen Data
 In a final validation step, we applied our refined model to unseen data from Argentina, which had been excluded from the initial training phase. This test provided additional evidence of our model’s predictive accuracy and its applicability to different economic contexts across various countries.
 
-## <a name="_oyh6x34ftkix">Results</a>
+# <a name="_oyh6x34ftkix">Results</a>
 **_XGBoost Results:_** 
 
 The XGBoost model gave us the most important features for predicting debt. The 25 most important predictors are shown in the screenshot below. Health and education indicators proved to be more predictive of a country’s debt than economic and financial factors. This confirms our hypothesis that the root cause of economic instability is more often than not, social issues. 
@@ -103,7 +103,7 @@ The below graph depicts the actual y values plotted against the predicted y valu
 
 Our model is able to accurately predict the trend of the debt variable, however, it occasionally struggles to capture the full complexity of the trends. This could be due to two reasons: the model is not complex enough to account for all the nuances or there are too many null values in our data. Our attempts to increase the model complexity by increasing the number of layers in the LSTM only worsened the results. This suggests that the model’s limitations are most likely due to the large number of null values in our data.  Additionally, the predicted value for our very last time step is consistently higher than the actual value because it's at the end of the rolling window. 
 
-## Analysis
+# Analysis
 
 The business interpretation of our results is threefold: we have a quantitative, qualitative, and a post hoc analysis. For instance, if the World Bank/IMF wants to determine the likelihood of a country defaulting on its external loan, they would use the following evaluation methods. Let's run the analysis using Argentina as an example:
 
@@ -126,13 +126,13 @@ After obtaining predictions, we conducted a post hoc analysis to understand the 
 
 - As we hypothesized, Argentina had a higher number of neonatal deaths compared to other countries with similar population sizes. Neonatal deaths was one of the top most important features from our XGBoost model.
 
-### Conclusion:
+# Conclusion:
 A combination of factors led Argentina to default on its IMF loan: a deep recession, political unrest, etc. But the most actionable insight for our stakeholders is that the strict terms and conditions and austerity measures imposed by the IMF on Argentina causing the economic collapse of Argentina and leading it to default on its international loans. 
 
 Instead of focusing solely on fiscal consolidation, the IMF could have focused on policies that promoted economic growth, job creation, improving the public sector, etc.
 
 
-## <a name="_oyh6x34ftkix">Discussion</a>
+# <a name="_oyh6x34ftkix">Discussion</a>
 
 
 - Using a continuous variable to represent debt as a percentage of GDP, rather than a binary classification of default (yes/no), provides more nuanced insights. This continuous measurement allows for a more detailed analysis of a country's financial health, offering stakeholders a spectrum of risk levels rather than a simplistic default indicator. This approach enhances the utility of our model by providing deeper, actionable insights that better inform decision-making processes.
@@ -141,14 +141,14 @@ Instead of focusing solely on fiscal consolidation, the IMF could have focused o
 
 
 
-## <a name="_oyh6x34ftkix">Limitations</a>
+# <a name="_oyh6x34ftkix">Limitations</a>
 
 - The black box nature of our model hinders transparency and interpretability,  which are crucial for stakeholders to trust and effectively use the predictions it generates. If we could access and analyze the model’s internal weights, it would enable us to conduct detailed post hoc analyses to explore potential interactions between different sectors. By quantifying these interactions and assessing their impact, we could not only enhance our understanding of how various factors contribute to the model's predictions but also improve the model’s accuracy and reliability. This approach would allow for a more transparent assessment of the model.
 
 - Without expertise of social scientists and economists, handling null values diminishes its practical utility, emphasizing the need for domain knowledge integration.
 - Implementing a rolling window for debt analysis is a success, but translating insights into strategies remains challenging. Refining the model architecture and integration with decision-making processes are still required.
  
-## <a name="_d3spbtui6nye"></a>**Future work**
+# <a name="_d3spbtui6nye"></a>**Future work**
 
 Incorporating methods such as LIME (Local Interpretable Model-agnostic Explanations) can help traslate how different features influence predictions. Additionally, hosting educational workshops for stakeholders can demystify the model's mechanics, thereby boosting user confidence in its application.
 
