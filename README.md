@@ -25,7 +25,7 @@ In our last data collection iteration, the dataset expanded to include data from
 
 The features of our dataset encompass a broad range of indicators across multiple domains—including socio-economic, educational, health, labor, demographic, and other miscellaneous factors. The target variable of our analysis is the national debt expressed as a percentage of GDP.
 <p align="center">
-  <img src=".Resources/image3.png" alt="Description of Image">
+  <img src="Resources/image3.png" alt="Description of Image">
   <br>
   <em>2.1 Average Debt as % of GDP for 95 Percentile Countries</em>
 </p>
@@ -38,7 +38,7 @@ Africa predominantly features low to moderate debt levels with countries like Gu
 On looking at the explanatory variables we find high positive correlation between age-related demographics such as the old-age dependency ratio and the percentage of the male population aged 65 and above, suggesting that regions with a higher proportion of elderly males tend to have higher dependency ratios. Education-related metrics, particularly gender parity indices (GPI) for primary and secondary education, also show strong correlations. This implies that gender parity in primary education is a good predictor of parity in combined primary and secondary levels. Other notable correlations involve birth rates, neonatal deaths, and age populations, indicating significant relationships between demographic changes and dependent population ratios.
 
 <p align="center">
-  <img src=".Resources/image2.png" alt="Description of Image">
+  <img src="Resources/image2.png" alt="Description of Image">
   <br>
   <em>2.2 Trends in explanatory variables over time</em>
 </p>
@@ -80,7 +80,7 @@ In a final validation step, we applied our refined model to unseen data from Arg
 
 The XGBoost model gave us the most important features for predicting debt. The 25 most important predictors are shown in the screenshot below. Health and education indicators proved to be more predictive of a country’s debt than economic and financial factors. This confirms our hypothesis that the root cause of economic instability is more often than not, social issues. 
 <p align="center">
-  <img src=".Resources/image4.png" alt="Description of Image">
+  <img src="Resources/image4.png" alt="Description of Image">
   <br>
   <em>4.1 Results from Feature Importance through XGBoost</em>
 </p>
@@ -96,7 +96,7 @@ Our final LSTM model successfully predicted a country’s Debt as a percentage o
 The below graph depicts the actual y values plotted against the predicted y values.
 
 <p align="center">
-  <img src=".Resources/image1.png" alt="Description of Image">
+  <img src="Resources/image1.png" alt="Description of Image">
   <br>
   <em>4.2 Results from the LSTM</em>
 </p>
