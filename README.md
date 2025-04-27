@@ -1,28 +1,18 @@
 
 # **Detailed Project Report**
 
-## Navigate the Repository
+### Navigate the Repository
 
-### Folder Structure
-The repository is organized into the following files and directories:
+#### Folder Structure
 
-- **Final-Data.xlsx**  
-  The final dataset used in the project, organized for analysis and modeling.
-
-- **Modelling.ipynb**  
-  A Jupyter notebook containing the code for data modeling and predictive analysis.
-
-- **Preprocessing-EDA.ipynb**  
-  A Jupyter notebook focused on data preprocessing and exploratory data analysis.
-
-- **requirements.txt**  
-  Specifies the dependencies required for the project to run seamlessly. ## Installing Project Dependencies. To install all required Python packages for this project, run the following command in your terminal:
-
+- **Final-Data.xlsx** : The final dataset used in the project, organized for analysis and modeling.
+- **Modelling.ipynb** : A Jupyter notebook containing the code for data modeling and predictive analysis.
+- **Preprocessing-EDA.ipynb** : A Jupyter notebook focused on data preprocessing and exploratory data analysis.
+- **requirements.txt** : Specifies the dependencies required for the project to run seamlessly. ## Installing Project Dependencies. To install all required Python packages for this project, run the following command in your terminal:
 ```bash
 pip install -r requirements.txt
 ```
-
-- **Resources/**  
+- **Resources**  
   Contains various resources related to the project, including supplementary materials.
 
 
