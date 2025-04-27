@@ -61,7 +61,6 @@ However, VAR models are constrained by the ratio of features to observations, di
 To overcome the limitations of the VAR model, we shifted our focus to Long Short-Term Memory (LSTM) networks. An initial experiment with a simple LSTM model on U.S. data produced promising results. To address potential biases of using data solely from the U.S., we expanded our dataset to include socio-economic, health, and educational data from an additional 170 countries. This expansion culminated in a comprehensive dataset, which we consolidated using an outer join by country and year, resulting in a data frame with over 10,000 columns.
 
 
-
 ### Data Masking Strategy
 Due to the limitations of traditional imputation methods, we decided on a data masking approach to handle missing values. We masked the missing data with a placeholder value of -999, ensuring that these entries would not impact the model’s performance. This method allowed us to preserve the integrity of the dataset while effectively managing missing data, which was critical for maintaining the reliability of our predictive models.
 
